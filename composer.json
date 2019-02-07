@@ -1,0 +1,37 @@
+{
+    "name": "mediabeastnz/omnipay-laybuy",
+    "type": "library",
+    "version": "0.9.0",
+    "description": "Laybuy gateway for Omnipay payment processing library",
+    "keywords": [
+        "lay buy",
+        "laybuy",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "gateway"
+    ],
+    "homepage": "https://github.com/mediabeastnz/omnipay-laybuy",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Myles Derham",
+            "email": "myles.derham@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Laybuy\\" : "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}

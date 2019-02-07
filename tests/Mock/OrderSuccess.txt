@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Fri, 15 Feb 2013 19:19:21 GMT
+Server: Apache
+Content-Length: 136
+Connection: close
+Content-Type: application/json; charset=utf-8
+
+result=SUCCESS
+token=frOilqUU0DboUCiyRtnzH1VdBXnrj7kD39NWhgsD
+paymentUrl=https://payment.laybuy.com/pay/frOilqUU0DboUCiyRtnzH1VdBXnrj7kD39NWhgsD
