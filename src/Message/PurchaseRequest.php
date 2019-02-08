@@ -7,6 +7,14 @@ use Omnipay\Common\Exception\InvalidRequestException;
 class PurchaseRequest extends AuthorizeRequest
 {
     /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return parent::getEndpoint() . '/order/create';
+    }
+
+    /**
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
      *
@@ -15,6 +23,8 @@ class PurchaseRequest extends AuthorizeRequest
      */
     public function getData()
     {
+        // $this->validate('phone');
+
         /** @var \Omnipay\Common\CreditCard $card */
         $card = $this->getCard();
 
@@ -37,7 +47,7 @@ class PurchaseRequest extends AuthorizeRequest
                 'firstName'   => $givenNames,
                 'lastName'    => $surname,
                 'email'       => $card->getEmail(),
-                'phone'       => $card->getPhone(),
+                'phone'       => $card->getPhone()
             ),
             'billingAddress'  => array(
                 'name'        => $card->getBillingName(),
@@ -88,12 +98,14 @@ class PurchaseRequest extends AuthorizeRequest
         return $itemArray;
     }
 
-    /**
-     * @return string
-     */
-    public function getEndpoint()
+    public function getTaxAmount()
     {
-        return parent::getEndpoint() . '/order/create';
+        return $this->getParameter('taxAmount');
+    }
+
+    public function setTaxAmount($value)
+    {
+        return $this->setParameter('taxAmount', $value);
     }
 
     /**

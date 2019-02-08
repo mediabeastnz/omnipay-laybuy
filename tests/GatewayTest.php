@@ -27,6 +27,7 @@ class GatewayTest extends GatewayTestCase
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
 
         $this->options = array(
+            'testMode' => true,
             'amount' => '10.00',
             'returnUrl' => 'https://www.example.com/return',
         );
@@ -45,35 +46,9 @@ class GatewayTest extends GatewayTestCase
     private function _testSuccessfulPurchase($response)
     {
         $this->assertFalse($response->isSuccessful());
-        $this->assertTrue($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
         $this->assertNull($response->getMessage());
     }
-
-    /** @test */
-    // public function authorize()
-    // {
-    //     $request = $this->gateway->authorize();
-    //     $this->assertInstanceOf('Omnipay\Laybuy\Message\AuthorizeRequest', $request);
-    // }
-
-    /** @test */
-    // public function authorizeRequest()
-    // {
-    //     $this->setMockHttpResponse('OrderSuccess.txt');
-
-    //     $response = $this->gateway->authorize()->send();
-    //     $contents = (string) $response->getData();
-
-    //     $expected = [
-    //         "result"      => "SUCCESS",
-    //         "token"       => "frOilqUU0DboUCiyRtnzH1VdBXnrj7kD39NWhgsD",
-    //         "paymentUrl"  => "https://payment.laybuy.com/pay/frOilqUU0DboUCiyRtnzH1VdBXnrj7kD39NWhgsD"
-    //     ];
-
-    //     $this->assertTrue($response->isSuccessful());
-    //     $this->assertEquals($expected, $contents[0]);
-    // }
 
     public function testPurchase()
     {

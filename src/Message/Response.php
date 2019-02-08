@@ -24,16 +24,21 @@ class Response extends AbstractResponse
      */
     public function isSuccessful()
     {
-        if (array_key_exists('result', $this->data) && $this->data->result == 'SUCCESS') {
+        if (array_key_exists('result', $this->data) && $this->data['result'] == 'SUCCESS') {
             return true;
         }
 
         return false;
     }
 
-    public function isRedirect()
+    public function getMessage()
     {
-        return true;
+        if (isset($this->data['result']) && $this->data['result'] == 'ERROR') {
+            return $this->data['error'];
+        }
+
+        return null;
+
     }
 
 }

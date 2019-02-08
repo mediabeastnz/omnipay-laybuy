@@ -2,11 +2,12 @@
 
 namespace Omnipay\Laybuy\Message;
 
-use Symfony\Component\HttpFoundation\Response as HttpResponse;
-
 class PurchaseResponse extends Response
 {
 
+    /**
+     * @return string
+     */
     public function getRedirectMethod()
     {
         return 'GET';
@@ -17,14 +18,18 @@ class PurchaseResponse extends Response
      */
     public function isRedirect()
     {
-        return ((1 === (int) $this->data['token']) && !empty($this->data->paymentUrl));
+        return $this->isSuccessful();
     }
 
+    /**
+     * @return string|null
+     */
     public function getRedirectUrl()
     {
         if ($this->isRedirect()) {
-            return (string) $this->data->paymentUrl;
+            return $this->data['paymentUrl'];
         }
+        return null;
     }
 
     /**
@@ -32,7 +37,7 @@ class PurchaseResponse extends Response
      */
     public function getToken()
     {
-        return isset($this->data->token) ? $this->data->token : null;
+        return isset($this->data['token']) ? $this->data['token'] : null;
     }
 
     /**
@@ -48,6 +53,6 @@ class PurchaseResponse extends Response
      */
     public function getPaymentUrl()
     {
-        return isset($this->data->paymentUrl) ? $this->data->paymentUrl : null;
+        return isset($this->data['paymentUrl']) ? $this->data['paymentUrl'] : null;
     }
 }
