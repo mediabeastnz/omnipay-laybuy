@@ -12,8 +12,11 @@ class CompletePurchaseRequest extends AuthorizeRequest
      */
     public function getData()
     {
+        $token = $this->getToken() ? $this->getToken() : $this->httpRequest->query->get('token');
         return array(
-            'token' => $this->getToken()
+            'currency' => $this->getCurrency(),
+            'amount' => $this->getAmount(),
+            'token' => $token
         );
     }
 
@@ -24,4 +27,15 @@ class CompletePurchaseRequest extends AuthorizeRequest
     {
         return parent::getEndpoint() . '/order/confirm';
     }
+
+    public function getToken()
+    {
+        return $this->getParameter('token');
+    }
+
+    public function setToken($value)
+    {
+        return $this->setParameter('token', $value);
+    }
+
 }

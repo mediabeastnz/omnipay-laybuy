@@ -35,6 +35,20 @@ class Response extends AbstractResponse
     {
         if (isset($this->data['result']) && $this->data['result'] == 'ERROR') {
             return $this->data['error'];
+        } elseif (isset($this->data['result']) && $this->data['result'] == 'SUCCESS') {
+            return "SUCCESS";
+        }
+
+        return null;
+
+    }
+
+    public function getTransactionReference()
+    {
+        if (isset($this->data['orderId'])) {
+            return $this->data['orderId'];
+        } elseif (isset($this->data['paymentUrl'])){
+            return $this->data['paymentUrl'];
         }
 
         return null;

@@ -138,4 +138,5 @@ class AuthorizeRequest extends AbstractRequest
 
         return 'Basic ' . base64_encode($merchantId . ':' . $merchantSecret);
     }
+
 }

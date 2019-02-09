@@ -23,7 +23,6 @@ class PurchaseRequest extends AuthorizeRequest
      */
     public function getData()
     {
-        // $this->validate('phone');
 
         /** @var \Omnipay\Common\CreditCard $card */
         $card = $this->getCard();

@@ -66,4 +66,14 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('10.00', $request->getAmount());
     }
 
+    public function testRefund()
+    {
+        $options = array('amount' => '10.00', 'orderId' => '123');
+        $request = $this->gateway->refund($options);
+
+        $this->assertInstanceOf('Omnipay\Laybuy\Message\RefundRequest', $request);
+        $this->assertSame('10.00', $request->getAmount());
+        $this->assertNull($request->getTransactionReference());
+    }
+
 }

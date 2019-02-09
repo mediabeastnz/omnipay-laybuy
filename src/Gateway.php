@@ -92,4 +92,15 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Laybuy\Message\CompletePurchaseRequest', $options);
     }
+
+    /**
+     * Handle refunds
+     *
+     * @param array $options
+     * @return \Omnipay\Common\Message\ResponseInterface
+     */
+    public function refund(array $options = array())
+    {
+        return $this->createRequest('\Omnipay\Laybuy\Message\RefundRequest', $options);
+    }
 }
