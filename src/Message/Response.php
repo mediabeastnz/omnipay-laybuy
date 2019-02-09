@@ -47,12 +47,11 @@ class Response extends AbstractResponse
     {
         if (isset($this->data['orderId'])) {
             return $this->data['orderId'];
-        } elseif (isset($this->data['paymentUrl'])){
+        } elseif (isset($this->data['paymentUrl'])) {
             return $this->data['paymentUrl'];
         }
 
         return null;
 
     }
-
 }

@@ -5,7 +5,6 @@ namespace Omnipay\Laybuy\Message;
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\AbstractRequest;
 
-
 class AuthorizeRequest extends AbstractRequest
 {
     protected $liveEndpoint = 'https://api.laybuy.com';
@@ -138,5 +137,4 @@ class AuthorizeRequest extends AbstractRequest
 
         return 'Basic ' . base64_encode($merchantId . ':' . $merchantSecret);
     }
-
 }

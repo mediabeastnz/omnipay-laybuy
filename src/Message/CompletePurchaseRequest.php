@@ -37,5 +37,4 @@ class CompletePurchaseRequest extends AuthorizeRequest
     {
         return $this->setParameter('token', $value);
     }
-
 }

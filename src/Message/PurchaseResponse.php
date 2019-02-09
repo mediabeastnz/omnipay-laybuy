@@ -39,5 +39,4 @@ class PurchaseResponse extends Response
     {
         return isset($this->data['paymentUrl']) ? $this->data['paymentUrl'] : null;
     }
-
 }
