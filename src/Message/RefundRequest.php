@@ -25,5 +25,4 @@ class RefundRequest extends AuthorizeRequest
     {
         return parent::getEndpoint() . '/order/refund';
     }
-
 }
